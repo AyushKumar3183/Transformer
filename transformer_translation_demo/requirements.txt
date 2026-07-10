@@ -1,0 +1,16 @@
+# Transformer Machine Translation Demo
+# Python 3.11
+
+# Core framework
+streamlit>=1.32.0,<2.0.0
+
+# Hugging Face ecosystem
+transformers>=4.38.0,<5.0.0
+sentencepiece>=0.2.0,<1.0.0
+protobuf>=4.25.0,<6.0.0
+
+# Deep learning backend
+torch>=2.1.0,<3.0.0
+
+# Utilities
+huggingface-hub>=0.21.0,<1.0.0
