@@ -1,7 +1,41 @@
-## dataset ignore
-data/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Virtual environment
 venv/
+.venv/
+env/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Dataset & downloads
+data/
 .data/
-*.pt
-__pycache__
+
+# Training outputs
 result/
+saved/
+*.pt
+*.pth
+*.ckpt
+
+# Logs & caches
+*.log
+.cache/
+.pytest_cache/

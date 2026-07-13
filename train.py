@@ -4,6 +4,7 @@
 @homepage : https://github.com/gusdnd852
 """
 import math
+import os
 import time
 
 from torch import nn, optim
@@ -109,6 +110,9 @@ def evaluate(model, iterator, criterion):
 
 
 def run(total_epoch, best_loss):
+    os.makedirs('result', exist_ok=True)
+    os.makedirs('saved', exist_ok=True)
+
     train_losses, test_losses, bleus = [], [], []
     for step in range(total_epoch):
         start_time = time.time()
