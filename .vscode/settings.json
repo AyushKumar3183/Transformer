@@ -1,0 +1,7 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/transformer_translation_demo/.venv/bin/python",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/transformer_translation_demo"
+  ],
+  "python.analysis.typeCheckingMode": "basic"
+}

@@ -9,7 +9,6 @@ Pipeline overview (maps to Vaswani et al., 2017):
 
 import time
 from functools import lru_cache
-from typing import Any
 
 import torch
 from transformers import M2M100ForConditionalGeneration, M2M100Tokenizer
@@ -112,7 +111,7 @@ def translate(
     # Step 1 — Tokenize: convert text to subword token IDs with source-language tag
     tokenizer.src_lang = source_lang_code
     try:
-        encoded: dict[str, Any] = tokenizer(
+        encoded = tokenizer(
             text,
             return_tensors="pt",
             truncation=True,
@@ -124,7 +123,7 @@ def translate(
 
     # Move tensors to the same device as the model
     device = next(model.parameters()).device
-    encoded = {k: v.to(device) for k, v in encoded.items()}
+    model_inputs = {k: v.to(device) for k, v in encoded.items()}
 
     # forced_bos_token_id tells the decoder which language to generate in
     forced_bos_token_id = tokenizer.get_lang_id(target_lang_code)
@@ -134,7 +133,7 @@ def translate(
     try:
         with torch.no_grad():
             generated_ids = model.generate(
-                **encoded,
+                **model_inputs,
                 forced_bos_token_id=forced_bos_token_id,
                 max_new_tokens=MAX_NEW_TOKENS,
                 num_beams=NUM_BEAMS,

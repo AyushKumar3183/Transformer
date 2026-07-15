@@ -1,0 +1,12 @@
+{
+  "venvPath": "transformer_translation_demo",
+  "venv": ".venv",
+  "pythonVersion": "3.13",
+  "executionEnvironments": [
+    {
+      "root": "transformer_translation_demo",
+      "pythonVersion": "3.13",
+      "extraPaths": ["."]
+    }
+  ]
+}

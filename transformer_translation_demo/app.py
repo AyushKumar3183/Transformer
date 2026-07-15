@@ -296,16 +296,21 @@ def main() -> None:
     )
 
     # ── Action buttons ──────────────────────────────────────────────────
+    def _clear_form() -> None:
+        """Reset input and result via callback (safe for widget-backed keys)."""
+        st.session_state["input_text"] = ""
+        st.session_state.pop("last_result", None)
+
     btn_col1, btn_col2, _ = st.columns([2, 2, 6])
     with btn_col1:
         translate_clicked = st.button("Translate", type="primary", use_container_width=True)
     with btn_col2:
-        clear_clicked = st.button("Clear", type="secondary", use_container_width=True)
-
-    if clear_clicked:
-        st.session_state.pop("last_result", None)
-        st.session_state["input_text"] = ""
-        st.rerun()
+        st.button(
+            "Clear",
+            type="secondary",
+            use_container_width=True,
+            on_click=_clear_form,
+        )
 
     # ── Model status indicator ──────────────────────────────────────────
     if is_model_loaded():
